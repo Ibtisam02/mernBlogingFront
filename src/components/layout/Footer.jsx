@@ -19,7 +19,7 @@ function Footer() {
         <div className='flex flex-col items-center gap-3 w-[25%]'>
             <img src={logo} alt="" />
             <p className='text-white'>Quality With Quantity</p>
-            <p className='text-white'>copyrights 2024 ibtisam-Afzal</p>
+            <p className='text-white'>copyrights&copy; 2024 ibtisam-Afzal</p>
         </div>
         <div className='flex flex-col gap-y-3 items-center w-[25%]'>
             <h3 className='text-2xl font-semibold text-white'>Follow Us</h3>

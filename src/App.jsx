@@ -20,6 +20,12 @@ import CommonLayout from "./layouts/CommonLayout.jsx"
 import CheckAuth from "./common/CheckAuth.jsx"
 import { useSelector,useDispatch } from "react-redux"
 import { checkAuth } from "./redux/authSlice/index.jsx"
+import { useState, CSSProperties } from "react";
+import HashLoader from "react-spinners/HashLoader";
+import AddAProduct from "./pages/adminPages/AddAProduct.jsx"
+import Logout from "./pages/adminPages/Logout.jsx"
+import UpdateProduct from "./pages/adminPages/UpdateProduct.jsx"
+import { Toaster } from "react-hot-toast"
 
 
 
@@ -29,11 +35,9 @@ function App() {
   useEffect(() => {
     dispatch(checkAuth())
   }, [dispatch])
+
   const {user,isAuthenticated,isLoading}=useSelector(state=>state.auth)
 
-console.log(user)
-console.log(isAuthenticated)
-console.log(isLoading)
   useEffect(()=>{
     WebFont.load({
       google:{
@@ -41,11 +45,24 @@ console.log(isLoading)
       }
     })
   },[])
+
+let [load,setLoad]=useState(true)
+
  
 return(
   
 <>
-{isLoading?<div>loading</div>:<Routes>
+<Toaster position="top-right" />
+{isLoading? <div className="sweet-loading w-screen h-screen flex justify-center items-center">
+
+  <HashLoader
+  color="#ff0000"
+  cssOverride={{}}
+  loading={isLoading}
+  size={60}
+  speedMultiplier={2}
+/>
+    </div>:<Routes>
     <Route path="/" element={<CheckAuth isAuthenticated={isAuthenticated} user={user}><CommonLayout/></CheckAuth>}>
       <Route path="home" element={<Home/>}/>
       <Route path="login" element={<Login />} />
@@ -60,6 +77,9 @@ return(
     <Route path="products" element={<ProductsView />} />
     <Route path="users" element={<UsersView />} />
     <Route path="analytics" element={<Analatics />} />
+    <Route path="add-a-product" element={<AddAProduct/>} />
+    <Route path="logout" element={<Logout/>} />
+    <Route path="update/:id" element={<UpdateProduct/>} />
   </Route>
   </Routes>
   }

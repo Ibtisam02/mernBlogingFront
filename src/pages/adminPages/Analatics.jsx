@@ -2,7 +2,7 @@ import React from 'react'
 
 function Analatics() {
   return (
-    <div>Analatics</div>
+    <div className='ml-[70px] bg-yellow-500'>Analatics</div>
   )
 }
 

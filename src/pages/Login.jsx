@@ -57,6 +57,7 @@ dispatch(loginUser(formData)).then((data)=>{
               className="text-[1.30rem] py-1 px-8 w-[90%]  text-white rounded-md bg-transparent outline-none border-white border-[1.5px] border-b-[3px] "
               id="password"
               type={showPass?"text":"password"}
+              required
             />
             
           </div>
