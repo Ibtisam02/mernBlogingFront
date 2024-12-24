@@ -94,7 +94,7 @@ function Checkout() {
                         <div className="flex justify-between ">
                             <span>Tax (5%) <span className="text-sm font-thin">if total is less then Rs.5,000</span></span>
                             <span className="text-xl">
-                                Rs.{(cart?.[0]?.totalPrice*0.05).toLocaleString()}
+                                Rs.{(cart?.[0]?.totalPrice ? (cart[0].totalPrice * 0.05).toLocaleString() : "0")}
                             </span>
                         </div>
                         <div className="flex justify-between ">
