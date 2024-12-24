@@ -100,7 +100,7 @@ function Checkout() {
                         <div className="flex justify-between ">
                             <span>Delivery Charges</span>
                             <span className="text-xl">
-                                Rs.{cart?.[0]?.totalPrice>5000?(0):(200).toLocaleString()}
+                                Rs.{cart?.[0]?.totalPrice>5000?0:200}
                             </span>
                         </div>
                         <hr className="border-2" />
