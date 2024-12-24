@@ -8,9 +8,14 @@ export default {
     extend: {
       colors: {
         'primary':'#1E293B',
-      }
+      },
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif'],
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar'),
+  ],
 }
 

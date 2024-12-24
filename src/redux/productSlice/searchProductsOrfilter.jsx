@@ -4,6 +4,8 @@ import { createAsyncThunk,createSlice } from "@reduxjs/toolkit"
 const initialState={
     loading:false,
     products:null,
+    resultPerPage:20,
+    sort:"asc"
 }
 
 export const searchProductsOrFilter=createAsyncThunk("/search/filter/prducts",async (obj)=>{
@@ -24,7 +26,14 @@ export const searchProductsOrFilter=createAsyncThunk("/search/filter/prducts",as
 const searchProductsOrFilterSlice=createSlice({
     name:"searchProductsOrFilterSlice",
     initialState,
-    reducers:{},
+    reducers:{
+        resultPPage: (state,action) => {
+            state.resultPerPage = action.payload;
+          },
+        sorting: (state,action) => {
+            state.sort = action.payload;
+          },
+    },
     extraReducers:(builder)=>{
         builder
         .addCase(searchProductsOrFilter.pending, (state) => {
@@ -32,7 +41,7 @@ const searchProductsOrFilterSlice=createSlice({
           })
         .addCase(searchProductsOrFilter.fulfilled, (state,action) => {
             state.loading = false;
-            state.products=action.payload.success?action.payload?.products:null;
+            state.products=action.payload?.success?action.payload?.products:null;
           })
         .addCase(searchProductsOrFilter.rejected, (state) => {
             state.loading = false;
@@ -40,5 +49,5 @@ const searchProductsOrFilterSlice=createSlice({
           })
     }
 })
-
+export const { resultPPage,sorting } = searchProductsOrFilterSlice.actions;
 export default searchProductsOrFilterSlice.reducer

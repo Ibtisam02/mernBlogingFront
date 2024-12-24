@@ -31,7 +31,7 @@ function SideBar() {
     }
   return (
     <>
-    <div onMouseLeave={makeSideFalse} onMouseOver={setSideBarToTrue} className=' w-[70px]  px-4 hover:w-1/6 transition-all ease-out duration-200 bg-primary shadow-md h-screen fixed'>
+    <div onMouseLeave={makeSideFalse} onMouseOver={setSideBarToTrue} className=' w-[70px]  px-4 hover:w-1/6 transition-all ease-out duration-200 bg-primary shadow-md h-screen fixed z-30'>
         <div className='flex border-b-2 border-white'>
             <FaShop className='text-7xl text-red-600'/>
         {sideActive?<img className=' px-3 mb-1 w-2/3 object-contain ' src={logo} alt="" />:null}

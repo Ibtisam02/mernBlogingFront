@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { IoCloseSharp } from "react-icons/io5";
 import { getAllSubCatagory } from "../../redux/catagorySlice/addASubCatagory";
 import { getAllCatagories } from "../../redux/catagorySlice/addACatagory";
+import ProductCard from "../../components/compos/ProductCard";
 function ProductsView() {
   let [query, setQuery] = useState("");
 
@@ -86,7 +87,7 @@ function ProductsView() {
   return (
     <div className="ml-[70px]">
       <div className=" flex flex-col justify-center items-center  h-24 w-full">
-        <div className="flex justify-center items-center z-20  border border-red-500 w-1/2 h-10 rounded-br-sm rounded-tr-sm fixed">
+        <div className="flex justify-center items-center z-20  border border-red-500 w-1/2 h-10 rounded-br-sm rounded-tr-sm ">
           <input
             value={query}
             onChange={(e) => {
@@ -105,52 +106,50 @@ function ProductsView() {
             className="bg-red-600 text-2xl p-1 text-white w-20 h-full cursor-pointer"
           />
           {searchActive ? (
-            <div className="absolute top-10 w-[90vw] bg-white min-h-[90vh] border-2 border-black">
-              <div className="flex items-center justify-between shadow-lg border border-black bg-primary ">
-                <p className="text-lg font-semibold text-white pl-2">
-                  Search Results:
-                </p>
-                <IoCloseSharp
-                  onClick={() => {
-                    setSearchActive(false);
-                    setQuery("");
-                  }}
-                  className="text-4xl font-semibold hover:bg-red-500 text-white hover:text-white px-2 py-1"
-                />
-              </div>
-              <div className="flex flex-col flex-wrap justify-center bg-white shadow-xl gap-1 overflow-scroll">
-                <div className="w-full  flex items-center justify-around  h-11 ">
-                  <p className="text-lg font-bold">Image</p>
-                  <p className="text-lg font-bold">Name</p>
-                  <p className="text-lg font-bold">Price</p>
-                  <p className="text-lg font-bold">Rating</p>
-                </div>
-                {products?.map((product) => {
-                  return (
-                    <Link
-                      key={product?._id}
-                      to={`/admin/update/${product?._id}`}
-                    >
-                      <div className="w-full  flex items-center justify-around py-1  h-11 hover:text-white hover:bg-red-500 transition-all ease-in duration-200 border-t border-b border-black">
-                        <img
-                          className="h-full w-8"
-                          src={product?.images[0]?.url}
-                          alt=""
-                        />
-                        <p>{product?.name}</p>
-                        <p>{product?.price}</p>
-                        <p>{product?.rating}</p>
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          ) : null}
+  <div className="absolute top-12 left-1/2 transform -translate-x-1/2 w-[85vw] bg-white shadow-2xl rounded-lg border border-gray-300">
+    <div className="flex items-center justify-between px-4 py-2 bg-gradient-to-r from-red-600 to-red-400 rounded-t-lg">
+      <p className="text-lg font-semibold text-white">Search Results</p>
+      <IoCloseSharp
+        onClick={() => {
+          setSearchActive(false);
+          setQuery("");
+        }}
+        className="text-3xl text-white cursor-pointer hover:scale-110 transition-transform"
+      />
+    </div>
+    <div className="flex flex-col">
+    { /*<div className="grid grid-cols-4 gap-4 px-4 py-2 bg-gray-100 text-gray-700 font-bold text-center">
+        <p>Image</p>
+        <p>Name</p>
+        <p>Price</p>
+        <p>Rating</p>
+      </div>*/}
+      <div className="max-h-[70vh] overflow-y-auto">
+        {products?.map((product) => (
+          <Link
+            key={product?._id}
+            to={`/admin/update/${product?._id}`}
+            className="flex items-center justify-between px-4 py-2 hover:bg-red-500 hover:text-white transition-colors duration-200"
+          >
+            <img
+              className="h-10 w-10 object-cover rounded-full"
+              src={product?.images[0]?.url}
+              alt={product?.name}
+            />
+            <p className="w-1/4 truncate">{product?.name}</p>
+            <p className="w-1/4 text-center">${product?.price-product?.discount}</p>
+            <p className="w-1/4 text-center">{product?.rating}</p>
+          </Link>
+        ))}
+      </div>
+    </div>
+  </div>
+) : null}
+
         </div>
       </div>
       <div className="w-full   flex">
-        <div className="w-1/6 border-t border-r h-[100vh] border-black px-3 overflow-scroll">
+        <div className="w-1/6 border-t border-r h-[100vh] px-3 scrollbar-thin overflow-scroll">
           <p className="text-center text-xl font-bold">Filters</p>
           <div className="flex flex-col gap-y-2 ">
             <div className="flex items-center border  gap-x-3">
@@ -279,7 +278,7 @@ function ProductsView() {
             />
           </div>
         </div>
-        <div className="w-full  h-[100vh] overflow-scroll">
+        <div className="w-full  h-[100vh] ">
           <p className="text-center text-xl font-bold mb-5">Products</p>
           {loading ? (
             <div className="sweet-loading w-full h-screen flex justify-center items-center">
@@ -296,13 +295,7 @@ function ProductsView() {
               {products?.map((product) => {
                 return (
                   <AdminCard
-                    price={product?.price}
-                    name={product?.name}
-                    key={product?._id}
-                    reviews={product?.reviews.length}
-                    value={product?.rating}
-                    to={`/admin/update/${product?._id}`}
-                    images={product?.images}
+                    product={product}
                   />
                 );
               })}

@@ -26,7 +26,7 @@ const getUsersCountSlice=createSlice({
           })
         .addCase(getUsersCount.fulfilled, (state,action) => {
             state.loading = false;
-            state.usersCount=action.payload.success?action.payload?.users:null;
+            state.usersCount=action.payload?.success?action.payload?.users:null;
           })
         .addCase(getUsersCount.rejected, (state) => {
             state.loading = false;

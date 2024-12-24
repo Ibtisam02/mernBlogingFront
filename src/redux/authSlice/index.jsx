@@ -5,6 +5,7 @@ const initialState = {
   isAuthenticated: false,
   isLoading: true,
   user: null,
+  productsInCart:null,
 };
 
 const config = {
@@ -94,20 +95,22 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload.success?action.payload.user:null;
-        state.isAuthenticated = true;
+        state.user = action.payload?.success?action.payload?.user:null;
+        state.isAuthenticated =action.payload?.success?true:false;
+        state.productsInCart=action.payload?.success?action.payload?.itemsInCart:null
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;
         state.user = null;
         state.isAuthenticated = false;
+        state.productsInCart=null
       })
       .addCase(checkAuth.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(checkAuth.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload.success?action.payload.user:null;
+        state.user = action.payload?.success?action.payload?.user:null;
         state.isAuthenticated = true;
       })
       .addCase(checkAuth.rejected, (state, action) => {

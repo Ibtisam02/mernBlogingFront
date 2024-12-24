@@ -1,0 +1,34 @@
+.swiper-button-next,
+.swiper-button-prev {
+  width: 50px; /* Adjust the width */
+  height: 50px; /* Adjust the height */
+  font-size: 20px; /* Adjust the icon size */
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 20px; /* Adjust the size of the arrow icon */
+  color: rgb(0, 0, 0);
+ 
+}
+
+
+
+/* Style the pagination container */
+
+  
+  /* Style individual bullets */
+  .swiper-pagination-bullet {
+    background: rgb(0, 0, 0); 
+  }
+  
+  /* Highlight the active bullet */
+  .swiper-pagination-bullet-active {
+    background: white; 
+  }
+
+  .swiper-container {
+    width: 100%;
+    height: 300px; /* Or adjust as needed */
+  }
+  
+  

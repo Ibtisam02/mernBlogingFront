@@ -14,8 +14,7 @@ import { useSelector } from "react-redux";
 function Login() {
 
   const {user}=useSelector(state=>state.auth)
-console.log(user)
-  let [showPass,setShowPass]=useState(true)
+  let [showPass,setShowPass]=useState(false)
   let [email,setEmail]=useState("");
   let [pass,setPass]=useState("");
 let dispatch=useDispatch()
@@ -62,7 +61,7 @@ dispatch(loginUser(formData)).then((data)=>{
             
           </div>
           <p className="  hover:text-red-500 transition duration-300">
-          <Link className="text-right" to={"/reset-password"}>forget password?</Link>
+          <Link className="text-right" to={"/login/forgetPassword"}>forget password?</Link>
         </p>
         <input
           className="w-[90%] bg-red-500 py-2 px-3 hover:opacity-80 rounded-md transition duration-500 font-semibold cursor-pointer"

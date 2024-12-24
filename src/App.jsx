@@ -26,6 +26,13 @@ import AddAProduct from "./pages/adminPages/AddAProduct.jsx"
 import Logout from "./pages/adminPages/Logout.jsx"
 import UpdateProduct from "./pages/adminPages/UpdateProduct.jsx"
 import { Toaster } from "react-hot-toast"
+import SingleProduct from "./pages/SingleProduct.jsx"
+import Cart from "./pages/Cart.jsx"
+import ShopByCatagory from "./pages/ShopByCatagory.jsx"
+import ResetPasssword from "./pages/ResetPasssword.jsx"
+import ForgetPassword from "./pages/ForgetPassword.jsx"
+import Checkout from "./pages/Checkout.jsx"
+import UserOrders from "./pages/UserOrders.jsx"
 
 
 
@@ -41,7 +48,7 @@ function App() {
   useEffect(()=>{
     WebFont.load({
       google:{
-        families:["Roboto","Poppins"]
+        families:["Anton","Montserrat","Roboto","Poppins"]
       }
     })
   },[])
@@ -66,10 +73,17 @@ return(
     <Route path="/" element={<CheckAuth isAuthenticated={isAuthenticated} user={user}><CommonLayout/></CheckAuth>}>
       <Route path="home" element={<Home/>}/>
       <Route path="login" element={<Login />} />
+      <Route path="login/forgetPassword" element={<ForgetPassword />} />
+      <Route path="login/passwordReset/:token" element={<ResetPasssword />} />
       <Route path="singup" element={<Singup />} />
       <Route path="products" element={<Products />} />
       <Route path="about" element={<About />} /> 
       <Route path="contact" element={<Contact />} />
+      <Route  path="product/:id" element={<SingleProduct />} />
+      <Route  path="cart" element={<Cart />} />
+      <Route  path="productsCat/:catagory" element={<ShopByCatagory />} />
+      <Route  path="checkout" element={<Checkout />} />
+      <Route  path="user/orders" element={<UserOrders />} />
     </Route>
     <Route path="/admin" element={<CheckAuth isAuthenticated={isAuthenticated} user={user}><AdminLayout/></CheckAuth>}>
     <Route path="home" element={<AdminHome/>}/>
@@ -80,6 +94,7 @@ return(
     <Route path="add-a-product" element={<AddAProduct/>} />
     <Route path="logout" element={<Logout/>} />
     <Route path="update/:id" element={<UpdateProduct/>} />
+    <Route path="product/:id" element={<SingleProduct/>} />
   </Route>
   </Routes>
   }

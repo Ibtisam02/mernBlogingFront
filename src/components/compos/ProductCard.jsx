@@ -1,34 +1,16 @@
 import React from "react";
 import ReactStars from "react-rating-stars-component";
-import { Link } from "react-router-dom";
-import { Slide } from "react-slideshow-image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import 'swiper/css/pagination';
 import "../../customcss/swiperSlides.css"
-
-function AdminCard({
-  product
-}) {
-  let options = {
-    edit: false,
-    value: product?.rating,
-    isHalf: true,
-    size: window.innerWidth < 600 ? 25 : 27,
-  };
-  const divStyle = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundSize: "contain",
-    height: "300px",
-  };
+import { Link } from "react-router-dom";
+const ProductCard = ({ product }) => {
   return (
-    <div className="h-fit  shadow-md  bg-white relative hover:scale-105 transition duration-200 cursor-pointer  overflow-hidden rounded-lg">
     
-    <Link to={`/admin/product/${product?._id}`}>
+    <Link to={`/product/${product?._id}`}>
     <div className="w-[250px] bg-white rounded-lg shadow-lg  -z-30">
       {/* Image Slider */}
       <Swiper
@@ -103,22 +85,9 @@ function AdminCard({
           )}
         </div>
       </div>
-      <div className="flex justify-between items-center gap-x-3 text-white p-3">
-        <Link className="bg-red-500 w-full text-center px-2 py-1 rounded-lg">
-          delete
-        </Link>
-        <Link
-          to={`/admin/product/${product?._id}`}
-          className="bg-red-500 w-full px-2 py-1 text-center rounded-lg"
-        >
-          update
-        </Link>
-      </div>
     </div>
     </Link>
-      
-    </div>
   );
-}
+};
 
-export default AdminCard;
+export default ProductCard;

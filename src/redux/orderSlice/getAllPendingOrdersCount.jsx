@@ -4,7 +4,7 @@ import { createAsyncThunk,createSlice } from "@reduxjs/toolkit"
 
 const initialState={
     loading:false,
-    pendingOrdersCount:null,
+    pendingOrdersCountt:null,
 }
 
 export const getPendingOrdersCount=createAsyncThunk("/admin/pending-orders-count",async ()=>{
@@ -27,11 +27,11 @@ const getPendingOrdersCountSlice=createSlice({
           })
         .addCase(getPendingOrdersCount.fulfilled, (state,action) => {
             state.loading = false;
-            state.pendingOrdersCount=action.payload.success?action.payload?.pendingOrders:null;
+            state.pendingOrdersCountt=action.payload.success?action.payload?.pendingOrders:null;
           })
         .addCase(getPendingOrdersCount.rejected, (state) => {
             state.loading = false;
-            state.pendingOrdersCount=null
+            state.pendingOrdersCountt=null
           })
     }
 })
