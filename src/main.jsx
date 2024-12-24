@@ -9,7 +9,7 @@ import "./index.css";
 import { Provider } from "react-redux";
 import store from "./redux/store.js";
 
-axios.defaults.baseURL = 'http://localhost:4000/api/v1';
+axios.defaults.baseURL = 'https://mernecommercestore-production.up.railway.app/api/v1/';
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
