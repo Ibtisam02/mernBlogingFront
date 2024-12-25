@@ -23,7 +23,7 @@ let [trigger,setTriger]=useState(false);
     }
    
   return (
-    <div className="font-montserrat">
+    <div className="font-montserrat mt-20">
       <div>
         <h2 className=" text-[20px] font-black text-center">SHOPPING CART</h2>
       </div>

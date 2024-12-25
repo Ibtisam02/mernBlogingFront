@@ -40,7 +40,7 @@ function ShopByCatagory() {
               />
             </div>
           ) : (
-            <div className="flex flex-wrap justify-center gap-11 mb-4 ">
+            <div className="flex flex-wrap justify-center gap-11 mb-4 mt-20">
               {products?.map((product) => {
                 return (
                   <ProductCard key={product?._id + "hdfds"} product={product} />

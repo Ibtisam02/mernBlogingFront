@@ -187,7 +187,7 @@ function Products() {
     };
   }, [filterOn]);
   return (
-    <div className="relative">
+    <div className="relative mt-20">
       <div className="w-full   flex ">
         {filterOn ? (
           <div
@@ -199,10 +199,10 @@ function Products() {
         ) : null}
         <div
           className={`fixed top-0 z-10 bg-[#ececec] pb-6  h-[100vh] overflow-y-scroll  scrollbar-thin  transition-all ease-in duration-200 overflow-hidden ${
-            filterOn ? "w-1/4 px-3" : "w-0"
+            filterOn ? "md:w-1/4 xxsm:w-1/2 px-3" : "w-0"
           }`}
         >
-          <div className="flex justify-between items-center mb-8  mt-16">
+          <div className="flex justify-between items-center mb-8  mt-20">
             <p className="text-red-600 text-2xl font-bold">Filters</p>
             <RxCross1
               className="cursor-pointer"

@@ -119,7 +119,7 @@ function SingleProduct() {
     
   };
   return loading ? (
-    <div className="sweet-loading w-full h-screen flex justify-center items-center">
+    <div className="sweet-loading w-full h-screen flex justify-center items-center ">
       <HashLoader
         color="#ff0000"
         cssOverride={{}}
@@ -129,7 +129,7 @@ function SingleProduct() {
       />
     </div>
   ) : (
-    <div className="w-screen flex justify-around py-7">
+    <div className="w-screen flex justify-around py-7 mt-20">
       <div className="w-[400px] rounded-md overflow-hidden">
         <Swiper
           className="h-full"

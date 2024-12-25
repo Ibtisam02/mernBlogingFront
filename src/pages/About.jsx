@@ -5,7 +5,7 @@ import productImg2 from "../assets/product2.jpg"
 function About() {
   let navigate=useNavigate();
   return (
-    <div className="min-h-screen bg-white text-gray-800 px-6 py-12">
+    <div className="min-h-screen bg-white text-gray-800 px-6 py-12 mt-20">
     <div className="space-y-12">
       {/* Section 1: Introduction */}
       <section className="text-center space-y-6">

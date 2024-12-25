@@ -57,7 +57,7 @@ function Checkout() {
     };
 
     return (
-        <div className="min-h-screen bg-white text-gray-800 px-6 py-12">
+        <div className="min-h-screen bg-white text-gray-800 px-6 py-12 mt-20">
             <div className="max-w-4xl mx-auto space-y-12">
                 <h1 className="text-4xl font-bold text-center text-red-600">
                     Checkout

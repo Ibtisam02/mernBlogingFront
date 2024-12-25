@@ -41,7 +41,7 @@ function Singup() {
   return (
     <>
       <Metadata title={"Ecommerce singup"} />
-      <div className="h-fit gap-y-5  w-screen my-10 flex flex-col justify-center items-center">
+      <div className="h-fit gap-y-5  w-screen my-10 flex flex-col justify-center items-center mt-20">
         <form
           onSubmit={handleSubmitSingup}
           className="bg-primary h-[90%] flex py-5 flex-col  items-center justify-center w-[25%]  text-white rounded-md text-center"

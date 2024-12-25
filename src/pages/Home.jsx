@@ -112,14 +112,15 @@ function Home() {
           />
         </div>
       ) : (
-        <div div className="transition-all ease-in duration-300">
+        <div div className="transition-all ease-in duration-300 mt-20">
           <Metadata title={"Ecommerce"} />
 
           <div className="slide-container -z-30 ">
-            <Slide>
+            <Slide >
               {posters?.map((posters, index) => (
                 <Link to={posters?.productIdToRedirect?`/product/${posters?.productIdToRedirect}`:null} key={index}>
                   <div
+                  className="h-[300px]"
                     style={{
                       ...divStyle,
                       backgroundImage: `url(${posters?.posterUrl})`,

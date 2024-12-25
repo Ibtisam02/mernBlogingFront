@@ -12,6 +12,10 @@ export default {
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],
       },
+      screens: {
+        'xsm': '480px',  
+        'xxsm':'280px'
+      },
     },
   },
   /*plugins: [

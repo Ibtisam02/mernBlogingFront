@@ -47,7 +47,7 @@ let navigate=useNavigate()
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen mt-20">
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded-lg p-8 max-w-md w-full space-y-6"

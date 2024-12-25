@@ -2,11 +2,11 @@ import React from 'react'
 
 function Contact() {
   return (
-    <div className="min-h-screen bg-white text-gray-800 px-6 py-12">
+    <div className="min-h-screen bg-white text-gray-800 px-6 py-12 mt-20">
       <div className="space-y-12">
         {/* Section 1: Introduction */}
         <section className="text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-red-600">
+          <h1 className="text-4xl md:text-5xl font-bold text-black">
             Contact Us
           </h1>
           <p className="text-lg md:text-xl leading-relaxed">
