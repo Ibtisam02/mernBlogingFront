@@ -560,6 +560,7 @@ function Products() {
                   >
                     clear filters
                   </p>
+                  <div className="xxxsm:hidden md:block">
                   {available !== false ? (
                     <div
                       onClick={() => {
@@ -640,6 +641,7 @@ function Products() {
                       </span>
                     </div>
                   ) : null}
+                  </div>
                 </div>
               ) : null}
             </div>

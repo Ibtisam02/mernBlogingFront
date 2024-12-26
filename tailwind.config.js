@@ -14,7 +14,8 @@ export default {
       },
       screens: {
         'xsm': '480px',  
-        'xxsm':'280px'
+        'xxsm':'370px',
+        'xxxsm':'10px'
       },
     },
   },

@@ -92,8 +92,8 @@ function CartItem({ cart, refresh }) {
 
 
   return (
-    <div className="container mx-auto p-4">
-      <table className="w-full border-collapse">
+    <div className="container overflow-x-auto mx-auto p-4">
+      <table className="min-w-full border-collapse ">
         <thead>
           <tr className="border-b text-left">
             <th className="p-4">PRODUCT</th>
@@ -129,7 +129,7 @@ function CartItem({ cart, refresh }) {
                       className="w-20 h-20 object-cover rounded"
                     />
                     <div>
-                      <div className="font-bold">{productDetails?.name}</div>
+                      <div   className="font-semibold md:text-base xxsm:text-sm">{productDetails?.name.length>25?productDetails?.name.slice(0,25)+"..":productDetails?.name}</div>
 
                       {/* Size */}
                       {sizeDetails && (

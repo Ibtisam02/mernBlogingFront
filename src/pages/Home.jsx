@@ -98,7 +98,7 @@ function Home() {
   }, []);
   let [hoverOn, setHoverOn] = useState(false);
   console.log(reviews);
-  
+
   return (
     <>
       {loading ? (
@@ -115,24 +115,38 @@ function Home() {
         <div div className="transition-all ease-in duration-300 mt-20">
           <Metadata title={"Ecommerce"} />
 
-          <div className="slide-container -z-30 ">
-            <Slide >
+          <div className="slide-container  -z-30  ">
+            <Swiper
+              pagination={{
+                type: "fraction",
+              }}
+              navigation={true}
+              modules={[Pagination, Navigation]}
+              className="homeSwiper"
+            >
               {posters?.map((posters, index) => (
-                <Link to={posters?.productIdToRedirect?`/product/${posters?.productIdToRedirect}`:null} key={index}>
-                  <div
-                  className="h-[300px]"
-                    style={{
-                      ...divStyle,
-                      backgroundImage: `url(${posters?.posterUrl})`,
-                    }}
-                  ></div>
-                </Link>
+                <SwiperSlide>
+                  <Link
+                    to={
+                      posters?.productIdToRedirect
+                        ? `/product/${posters?.productIdToRedirect}`
+                        : null
+                    }
+                    key={index}
+                  >
+                    <img
+                  src={posters?.posterUrl}
+                  alt={`Product Slide ${index + 1}`}
+                  className="w-full xxxsm:h-[200px] md:h-[300px] object-cover "
+                />
+                  </Link>
+                </SwiperSlide>
               ))}
-            </Slide>
+            </Swiper>
           </div>
-          <div className="flex justify-center items-center gap-x-8 my-10">
-            <p className="text-xl font-semibold">Shop by category {"->"}</p>
-            <Link to={"/productsCat/phone"}>
+          <div className="flex flex-wrap justify-center items-center gap-5 xxsm:my-3 md:my-10">
+            <p className="text-xl font-semibold xxxsm:hidden md:block">Shop by category {"->"}</p>
+            <Link className="xxsm:w-[40%] md:w-fit flex justify-center" to={"/productsCat/phone"}>
               <div>
                 <img
                   className="rounded-full h-16 w-16  shadow-2xl object-cover"
@@ -142,7 +156,7 @@ function Home() {
                 <p>Mobiles</p>
               </div>
             </Link>
-            <Link to={"/productsCat/laptops"}>
+            <Link className="xxsm:w-[40%] md:w-fit flex justify-center"  to={"/productsCat/laptops"}>
               <div>
                 <img
                   className="rounded-full h-16 w-16  shadow-2xl object-cover"
@@ -152,7 +166,7 @@ function Home() {
                 <p>Laptops</p>
               </div>
             </Link>
-            <Link to={"/productsCat/air pods"}>
+            <Link className="xxsm:w-[40%] md:w-fit flex justify-center"  to={"/productsCat/air pods"}>
               <div>
                 <img
                   className="rounded-full h-16 w-16  shadow-2xl object-cover"
@@ -162,24 +176,24 @@ function Home() {
                 <p>AirPods</p>
               </div>
             </Link>
-            <Link to={"/productsCat/chrome book"}>
-              <div>
+            <Link className="xxsm:w-[40%] md:w-fit flex justify-center "  to={"/productsCat/chrome book"}>
+              <div className="flex flex-col justify-center items-center">
                 <img
                   className="rounded-full h-16 w-16  shadow-2xl object-cover"
                   src="data:image/jpeg;base64,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"
                   alt="img"
                 />
-                <p>Chrome Books</p>
+                <p className="text-center">Chrome Books</p>
               </div>
             </Link>
           </div>
           {firstSecProducts?.length && (
-            <div className="my-10 w-screen px-10 flex flex-col justify-center items-center">
+            <div className="my-10 w-screen xxsm:px-3 md:px-10 flex flex-col justify-center items-center">
               <Link
                 to={"/productsCat/chrome book"}
                 className="flex justify-between my-4 w-full"
               >
-                <h1 className=" text-3xl font-bold">Latest Chrome Books</h1>
+                <h1 className="xxsm:text-sm xsm:text-xl sm:text-2xl md:text-3xl font-bold">Latest Chrome Books</h1>
                 <button
                   onMouseOver={() => {
                     setHoverOn(true);
@@ -188,14 +202,14 @@ function Home() {
                     setHoverOn(false);
                   }}
                   className={`${
-                    hoverOn ? "w-32" : "w-[85px]"
+                    hoverOn ? "w-32" : " w-[85px]"
                   } flex-nowrap text-center flex justify-between overflow-hidden  items-center gap-x-5 border border-black border-opacity-30 px-3 py-1 cursor-pointer hover:bg-red-600  hover:text-white transition-all ease-in duration-300`}
                 >
                   <p className="text-nowrap">View All</p>{" "}
                   <FaLocationArrow className="text-white" />
                 </button>
               </Link>
-              <div className="py-5 flex flex-wrap gap-10 justify-center items-center">
+              <div className="py-5 flex flex-wrap sm:gap-10 xxxsm:gap-4 justify-center items-center">
                 {firstSecProducts?.map((productt, i) => {
                   return <ProductCard key={productt?._id} product={productt} />;
                 })}
@@ -204,12 +218,12 @@ function Home() {
           )}
           <div className=" bg-no-repeat bg-center bg-cover bg-fixed bg-[url('https://media.geeksforgeeks.org/wp-content/uploads/20231102162212/CASH-ON-DELIVERY-copy-(2).webp')] h-[70vh]"></div>
           {secondSecProducts?.length && (
-            <div className="my-10 w-screen px-10 flex flex-col justify-center items-center">
+            <div className="my-10 w-screen xxsm:px-3 md:px-10 flex flex-col justify-center items-center">
               <Link
-                to={"/productsCat/phone"}
+                to={"/productsCat/chrome book"}
                 className="flex justify-between my-4 w-full"
               >
-                <h1 className=" text-3xl font-bold">Latest Phones</h1>
+                <h1 className="xxsm:text-sm xsm:text-xl sm:text-2xl md:text-3xl font-bold">Latest Chrome Books</h1>
                 <button
                   onMouseOver={() => {
                     setHoverOn(true);
@@ -218,14 +232,14 @@ function Home() {
                     setHoverOn(false);
                   }}
                   className={`${
-                    hoverOn ? "w-32" : "w-[85px]"
+                    hoverOn ? "w-32" : " w-[85px]"
                   } flex-nowrap text-center flex justify-between overflow-hidden  items-center gap-x-5 border border-black border-opacity-30 px-3 py-1 cursor-pointer hover:bg-red-600  hover:text-white transition-all ease-in duration-300`}
                 >
                   <p className="text-nowrap">View All</p>{" "}
                   <FaLocationArrow className="text-white" />
                 </button>
               </Link>
-              <div className="py-5 flex flex-wrap gap-10 justify-center items-center">
+              <div className="py-5 flex flex-wrap sm:gap-10 xxxsm:gap-4 justify-center items-center">
                 {secondSecProducts?.map((productt, i) => {
                   return <ProductCard key={productt?._id} product={productt} />;
                 })}
@@ -236,12 +250,12 @@ function Home() {
             className={` bg-no-repeat bg-center bg-cover bg-fixed bg-[url('https://res.cloudinary.com/dj0k9z7tr/image/upload/v1734607400/you%20can%20delete/r4ndyre056ujqr19mtgt.webp')] h-[70vh]`}
           ></div>
           {thirdSecProducts?.length && (
-            <div className="my-10 w-screen px-10 flex flex-col justify-center items-center">
+            <div className="my-10 w-screen xxsm:px-3 md:px-10 flex flex-col justify-center items-center">
               <Link
-                to={"/productsCat/laptops"}
+                to={"/productsCat/chrome book"}
                 className="flex justify-between my-4 w-full"
               >
-                <h1 className=" text-3xl font-bold">Latest Laptops</h1>
+                <h1 className="xxsm:text-sm xsm:text-xl sm:text-2xl md:text-3xl font-bold">Latest Chrome Books</h1>
                 <button
                   onMouseOver={() => {
                     setHoverOn(true);
@@ -250,14 +264,14 @@ function Home() {
                     setHoverOn(false);
                   }}
                   className={`${
-                    hoverOn ? "w-32" : "w-[85px]"
+                    hoverOn ? "w-32" : " w-[85px]"
                   } flex-nowrap text-center flex justify-between overflow-hidden  items-center gap-x-5 border border-black border-opacity-30 px-3 py-1 cursor-pointer hover:bg-red-600  hover:text-white transition-all ease-in duration-300`}
                 >
                   <p className="text-nowrap">View All</p>{" "}
                   <FaLocationArrow className="text-white" />
                 </button>
               </Link>
-              <div className="py-5 flex flex-wrap gap-10 justify-center items-center">
+              <div className="py-5 flex flex-wrap sm:gap-10 xxxsm:gap-4 justify-center items-center">
                 {thirdSecProducts?.map((productt, i) => {
                   return <ProductCard key={productt?._id} product={productt} />;
                 })}
@@ -265,12 +279,12 @@ function Home() {
             </div>
           )}
           {fourthSecProducts?.length && (
-            <div className="my-10 w-screen px-10 flex flex-col justify-center items-center">
+            <div className="my-10 w-screen xxsm:px-3 md:px-10 flex flex-col justify-center items-center">
               <Link
-                to={"/productsCat/air pods"}
+                to={"/productsCat/chrome book"}
                 className="flex justify-between my-4 w-full"
               >
-                <h1 className=" text-3xl font-bold">Latest Air Pods</h1>
+                <h1 className="xxsm:text-sm xsm:text-xl sm:text-2xl md:text-3xl font-bold">Latest Chrome Books</h1>
                 <button
                   onMouseOver={() => {
                     setHoverOn(true);
@@ -279,14 +293,14 @@ function Home() {
                     setHoverOn(false);
                   }}
                   className={`${
-                    hoverOn ? "w-32" : "w-[85px]"
+                    hoverOn ? "w-32" : " w-[85px]"
                   } flex-nowrap text-center flex justify-between overflow-hidden  items-center gap-x-5 border border-black border-opacity-30 px-3 py-1 cursor-pointer hover:bg-red-600  hover:text-white transition-all ease-in duration-300`}
                 >
                   <p className="text-nowrap">View All</p>{" "}
                   <FaLocationArrow className="text-white" />
                 </button>
               </Link>
-              <div className="py-5 flex flex-wrap gap-10 justify-center items-center">
+              <div className="py-5 flex flex-wrap sm:gap-10 xxxsm:gap-4 justify-center items-center">
                 {fourthSecProducts?.map((productt, i) => {
                   return <ProductCard key={productt?._id} product={productt} />;
                 })}
@@ -294,7 +308,7 @@ function Home() {
             </div>
           )}
           {reviews?.reviews?.length > 0 ? (
-            <div className="px-5 my-3">
+            <div className="px-5 my-3 w-full xxsm:hidden lg:block">
               <h1 className=" text-3xl font-bold mb-3">Reviews</h1>
               <Swiper
                 navigation
@@ -304,15 +318,19 @@ function Home() {
                   clickable: true,
                 }}
                 modules={[Pagination, Navigation]}
-                className="mySwiper"
+                className="myuSwiper"
               >
                 {reviews?.reviews?.map((rev, i) => {
                   return (
                     <SwiperSlide
                       key={rev?._id}
-                      className="border p-4 rounded-md mb-4 bg-white shadow-lg"
+                      className="border p-4 rounded-md mb-4 bg-white shadow-lg "
                     >
-                      <h2 className="text-xl font-semibold text-gray-800 text-center">{reviews?.name.length<25?reviews?.name:reviews?.name.slice(0,25)+"..."}</h2>
+                      <h2 className="text-xl font-semibold text-gray-800 text-center">
+                        {reviews?.name.length < 25
+                          ? reviews?.name
+                          : reviews?.name.slice(0, 25) + "..."}
+                      </h2>
                       <h3 className="text-sm font-semibold text-gray-800 text-center">
                         {rev.name}
                       </h3>
@@ -325,7 +343,9 @@ function Home() {
                           color2="#ffd700"
                         />
                       </div>
-                      <p className="text-gray-600 text-center">"{rev.comment}"</p>
+                      <p className="text-gray-600 text-center">
+                        "{rev.comment}"
+                      </p>
                     </SwiperSlide>
                   );
                 })}

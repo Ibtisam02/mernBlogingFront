@@ -36,7 +36,7 @@ function Contact() {
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="rounded-lg shadow-md"
+            className="rounded-lg shadow-md w-full"
           ></iframe>
         </section>
 

@@ -129,8 +129,8 @@ function SingleProduct() {
       />
     </div>
   ) : (
-    <div className="w-screen flex justify-around py-7 mt-20">
-      <div className="w-[400px] rounded-md overflow-hidden">
+    <div className="w-screen flex justify-around items-center xxxsm:flex-col md:flex-row py-7 mt-20">
+      <div className="xxxsm:w-[250px] xxsm:w-[300px] xsm:w-[400px]  rounded-md overflow-hidden">
         <Swiper
           className="h-full"
           id="swiper1"
@@ -138,7 +138,7 @@ function SingleProduct() {
           
           pagination={{ clickable: true }}
           modules={[Navigation, Pagination]}
-          style={{ height: "475px" }}
+          style={{ }}
           autoplay={true}
         >
           {SingleProduct?.images?.map((image, index) => {
@@ -154,7 +154,7 @@ function SingleProduct() {
           })}
         </Swiper>
       </div>
-      <div className="px-3 w-[42%] ">
+      <div className="px-3 md:w-[42%] xxxsm:w-full ">
         <h4 className="text-[18px]  font-[700] uppercase">
           {SingleProduct?.name}
         </h4>
@@ -331,7 +331,7 @@ function SingleProduct() {
                 }}
               />
             </div>
-            <div className="flex gap-x-3">
+            <div className="flex justify-start gap-x-3">
               <label className="w-[15%]" htmlFor="nameofreviwer">
                 Comment:
               </label>
@@ -341,7 +341,7 @@ function SingleProduct() {
                   setComment(e.target.value);
                 }}
                 required
-                className="w-1/3  outline-none border-2 px-1 border-black"
+                className="w-[150px]  outline-none border-2 px-1 border-black"
                 id="nameofreviwer"
                 type="text"
               />
@@ -353,7 +353,7 @@ function SingleProduct() {
               />
             ) : (
               <input
-                className="bg-primary w-1/5 text-white px-1 rounded-md cursor-pointer"
+                className="bg-primary w-[100px] text-white px-1 rounded-md cursor-pointer"
                 type="submit"
                 value="Add Review"
               />

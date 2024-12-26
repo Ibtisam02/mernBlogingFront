@@ -53,7 +53,7 @@ export default function Header() {
     };
   }, []);
   return (
-    <header className="w-full bg-slate-800 text-white fixed top-0 left-0 z-30">
+    <header className="w-screen bg-slate-800 text-white fixed top-0 left-0 z-30">
       {/* Navbar */}
       <nav className="flex justify-between items-center px-4 py-3 md:px-8">
         {/* Logo */}
